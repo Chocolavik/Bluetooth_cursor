@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.Path
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -82,7 +83,10 @@ class CursorAccessibilityService : AccessibilityService() {
      * Must be called on main thread (or via Handler).
      */
     fun performTap(x: Float, y: Float) {
-        if (!serviceInfo.canPerformGestures) {
+        val canGesture = serviceInfo?.capabilities?.and(
+            android.accessibilityservice.AccessibilityServiceInfo.CAPABILITY_CAN_PERFORM_GESTURES
+        ) != 0
+        if (!canGesture) {
             Log.e(TAG, "canPerformGestures is false — cannot inject gestures.")
             return
         }
