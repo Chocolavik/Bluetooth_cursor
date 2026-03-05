@@ -40,11 +40,7 @@ class CursorOverlayManager(private val context: Context) {
         val params = WindowManager.LayoutParams(
             CURSOR_SIZE,
             CURSOR_SIZE,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
-            else
-                @Suppress("DEPRECATION")
-                WindowManager.LayoutParams.TYPE_SYSTEM_ALERT,
+            WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,  // minSdk=29 >= O(26)
             WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
                     WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE or
                     WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN,

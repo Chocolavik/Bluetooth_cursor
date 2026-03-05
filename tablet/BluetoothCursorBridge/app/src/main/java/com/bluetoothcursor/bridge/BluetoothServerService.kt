@@ -33,10 +33,10 @@ class BluetoothServerService : Service() {
         private const val NOTIF_CHANNEL_ID  = "BtCursorChannel"
         private const val NOTIF_ID          = 1
         private const val PACKET_SIZE       = 7
-        private const val HEADER            = 0xAB.toByte()
-        private const val CLICK_NONE        = 0x00.toByte()
-        private const val CLICK_DOWN        = 0x01.toByte()
-        private const val CLICK_UP          = 0x02.toByte()
+        private val HEADER                   = 0xAB.toByte()
+        private val CLICK_NONE               = 0x00.toByte()
+        private val CLICK_DOWN               = 0x01.toByte()
+        private val CLICK_UP                 = 0x02.toByte()
 
         // Standard Serial Port Profile UUID
         val SPP_UUID: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
