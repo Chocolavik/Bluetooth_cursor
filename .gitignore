@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.env
+venv/
+.venv/
+
+# Android / Gradle
+.gradle/
+build/
+*.apk
+*.aab
+*.aar
+local.properties
+.idea/
+*.iml
+tablet/BluetoothCursorBridge/gradle/wrapper/gradle-wrapper.jar
+
+# OS
+.DS_Store
+Thumbs.db

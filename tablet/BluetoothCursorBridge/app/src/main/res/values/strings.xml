@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Bluetooth Cursor Bridge</string>
+    <string name="accessibility_service_label">Bluetooth Cursor Bridge</string>
+    <string name="accessibility_description">Injects tap gestures on the screen when the laptop cursor is clicked, enabling cross-device control via Bluetooth.</string>
+</resources>
