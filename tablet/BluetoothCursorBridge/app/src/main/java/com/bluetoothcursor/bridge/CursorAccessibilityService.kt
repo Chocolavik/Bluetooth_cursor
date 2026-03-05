@@ -54,7 +54,13 @@ class CursorAccessibilityService : AccessibilityService() {
         Log.i(TAG, "Accessibility service connected — gesture injection ready.")
 
         val filter = IntentFilter(ACTION_INJECT_TAP)
-        registerReceiver(tapReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // RECEIVER_NOT_EXPORTED requires API 33+
+            registerReceiver(tapReceiver, filter, Context.RECEIVER_NOT_EXPORTED)
+        } else {
+            @Suppress("UnspecifiedRegisterReceiverFlag")
+            registerReceiver(tapReceiver, filter)
+        }
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) { /* not used */ }

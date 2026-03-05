@@ -31,14 +31,19 @@ jobs:
         with:
           gradle-version: '8.2'
 
-      # ── 4. Build debug APK ────────────────────────────────────────────────
+      # ── 4. Create local.properties so Gradle can find the Android SDK ───────
+      - name: Create local.properties
+        run: |
+          echo "ANDROID_HOME is: $ANDROID_HOME"
+          echo "sdk.dir=$ANDROID_HOME" > tablet/BluetoothCursorBridge/local.properties
+          cat tablet/BluetoothCursorBridge/local.properties
+
+      # ── 5. Build debug APK ────────────────────────────────────────────────
       - name: Build Debug APK
         working-directory: tablet/BluetoothCursorBridge
-        env:
-          ANDROID_HOME: ${{ env.ANDROID_HOME }}  # pre-installed on ubuntu-latest
         run: gradle assembleDebug --no-daemon --stacktrace
 
-      # ── 5. Upload APK as downloadable artifact ────────────────────────────
+      # ── 6. Upload APK as downloadable artifact ────────────────────────────
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
